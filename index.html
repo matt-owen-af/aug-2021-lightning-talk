@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>Migrating to 2019 Servers</title>
 
 		<link rel="stylesheet" href="dist/reset.css">
 		<link rel="stylesheet" href="dist/reveal.css">
@@ -16,8 +16,106 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<section>
+					<h2>Migrating to 2019 servers</h2>
+					<p class="fragment">10 things you should know before you start</p>
+				</section>
+
+				<section>
+					<h2>Octopus Deploy</h2>
+					<ul>
+						<li class="fragment">Change your deployment targets</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Non-exhaustive list</h2>
+					<table>
+						<thead>
+							<tr>
+								<th>Old</th>
+								<th>New</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr><td>NServiceBus</td><td>NServiceBus-2019</td></tr>
+							<tr><td>secured-internal-web</td><td>2019-internal-web</td></tr>
+							<tr><td>secured-internal-app</td><td>2019-internal-app</td></tr>
+							<tr><td>secured-external-web</td><td>2019-external-web</td></tr>
+							<tr><td>sharedwebserver-iis8</td><td>sharedwebserver-2019</td></tr>
+						</tbody>
+					</table>
+				</section>
+
+				<section>
+					<p class="r-fit-text"><a href="https://americanfidelity.visualstudio.com/Miscellaneous/_git/Change-Deployment-Targets">Miscellaneous \ Change-Deployment-Targets</a></p>
+				</section>
+				
+				<section>
+					<h2>GMSA's</h2>
+					<ul>
+						<li class="fragment"><code>PrincipalsAllowedToRetrieveManagedPassword</code></li>
+					</ul>
+				</section>
+
+				<section>
+					<p>gMSADCensusSvc$</p>
+					<p class="fragment">gmsaDCensusSvc-<a>grp</a></p>
+					<p class="fragment">
+						<br/><br/>
+						Add servers to the group associated with your service account.
+					</p>
+				</section>
+
+				<section>
+					<h2>.NET Core</h2>
+					<ul>
+						<li class="fragment">.NET Core 2.2 or earlier is <strong>NOT</strong> installed</li>
+						<li class="fragment">Upgrade to .NET Core 3.1 or .NET 5.0</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>IIS Web Sites</h2>
+					<p class="fragment">E.g. afbridge-criterion-api.afcorp.afg</p>
+					<br/>
+					<ul>
+						<li class="fragment">Update the servers in the load balancing pool for your hostname</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>IIS Web Apps</h2>
+					<p class="fragment">apps.dev.afcorp.afg/data-quality</p>
+					<p class="fragment">nsb.qa.afcorp.afg/newbusiness</p>
+					<br/>
+					<ul>
+						<li class="fragment">Create a custom domain name for your app</li>
+						<li class="fragment">Submit a load-balancing request to point to new servers</li>
+						<li class="fragment">Deploy Web Application &rarr; Deploy to IIS</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Pros</h2>
+					<ul>
+						<li class="fragment">More control</li>
+						<li class="fragment">Future-proof</li>
+					</ul>
+					<br/><br/>
+					<h2 class="fragment">Cons</h2>
+					<ul>
+						<li class="fragment">Consumers will have to update their URL's</li>
+					</ul>
+				</section>
+
+				<section>
+					<img src="./img/soapbox.jpg" />
+				</section>
+
+				<section>
+					<h2>Q&amp;A</h2>
+				</section>
 			</div>
 		</div>
 
